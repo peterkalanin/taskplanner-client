@@ -9,9 +9,7 @@ import { Router } from 'express';
 })
 export class PanelComponent implements OnInit {
 
-  constructor(
-    private router: Router
-  ) { }
+  constructor() { }
 
   ngOnInit(): void {
   }
