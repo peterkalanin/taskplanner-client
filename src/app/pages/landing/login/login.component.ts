@@ -9,7 +9,9 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class LoginPageComponent implements OnInit {
   form: FormGroup;
-  credetialsError: boolean = false;
+  formError = {
+    wrongCredentials: false
+  };
 
   constructor(
     private authService: AuthService,
@@ -28,7 +30,7 @@ export class LoginPageComponent implements OnInit {
 
   onSubmit() {
     if (this.form.valid) {
-      this.credetialsError = false;
+      this.formError.wrongCredentials = false;
       const { email, password } = this.form.value;
       this.authService.login(email, password)
         .subscribe(
@@ -39,7 +41,7 @@ export class LoginPageComponent implements OnInit {
           },
           (err) => {
             console.error(err);
-            this.credetialsError = true;
+            this.formError.wrongCredentials = true;
           }
         )
     }

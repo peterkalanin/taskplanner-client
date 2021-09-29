@@ -84,7 +84,7 @@
           </div>
           <form (ngSubmit)="onSubmit()" [formGroup]="form">
             <div
-              *ngIf="credetialsError"
+              *ngIf="formError.wrongCredentials"
               class="text-center text-sm pb-4 text-red-600"
             >
               Emailová adresa a heslo sa nezhodujú.
