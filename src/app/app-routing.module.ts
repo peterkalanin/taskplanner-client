@@ -1,14 +1,15 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { NotFoundComponent } from './pages/not-found/not-found.component';
 
 const routes: Routes = [
   {
-    path: 'account',
-    loadChildren: () => import('./pages/account/account.module').then(m => m.AccountModule)
-  },
-  {
     path: '',
     redirectTo: 'welcome/login'
+  },
+  {
+    path: '**',
+    component: NotFoundComponent
   }
 ];
 
