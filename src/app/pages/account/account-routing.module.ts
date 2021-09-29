@@ -9,6 +9,11 @@ const routes: Routes = [
     component: AccComponent,
     children: [
       {
+        path: '',
+        pathMatch: 'full',
+        redirectTo: 'dashboard'
+      },
+      {
         path: 'dashboard',
         component: DashboardComponent
       }
