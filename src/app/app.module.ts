@@ -13,10 +13,11 @@ import { LandingModule } from './pages/landing/landing.module';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
     ComponentsModule,
     PagesModule,
-    LandingModule
+    LandingModule,
+
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

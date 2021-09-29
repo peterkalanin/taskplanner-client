@@ -5,11 +5,16 @@ import { NotFoundComponent } from './pages/not-found/not-found.component';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'welcome/login'
+    redirectTo: '/welcome/login',
+    pathMatch: 'full'
+  },
+  {
+    path: 'not-found',
+    component: NotFoundComponent
   },
   {
     path: '**',
-    component: NotFoundComponent
+    redirectTo: 'not-found'
   }
 ];
 
