@@ -9,10 +9,6 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   {
-    path: 'acc',
-    loadChildren: () => import('./pages/account/account.module').then(m => m.AccountModule)
-  },
-  {
     path: 'not-found',
     component: NotFoundComponent
   },
