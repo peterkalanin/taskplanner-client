@@ -9,12 +9,8 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   {
-    path: 'not-found',
-    component: NotFoundComponent
-  },
-  {
     path: '**',
-    redirectTo: 'not-found'
+    component: NotFoundComponent
   }
 ];
 
