@@ -9,11 +9,5 @@ import { AuthService } from './services/auth.service';
 export class AppComponent {
   title = 'taskplanner-client';
 
-  constructor(private authService: AuthService) {
-
-  }
-
-  login() {
-    this.authService.login();
-  }
+  constructor() { }
 }
