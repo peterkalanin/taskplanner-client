@@ -21,29 +21,43 @@ export class AuthMockService {
 
   login(email: string, password: string): Observable<string> {
     return new Observable(o => {
-      const user = this.users.find(u => u.email == email && u.password == password);
-      if (user) {
-        return o.next(user.email);
+      this.simulateTimeResponse(() => {
+        const user = this.users.find(u => u.email == email && u.password == password);
+        if (user) {
+          return o.next(user.email);
 
-      } else {
-        return o.error('no user or wrong password');
-      }
+        } else {
+          return o.error('no user or wrong password');
+        }
+      })
     });
   }
 
   register(email: string, password: string): Observable<string> {
     return new Observable(o => {
-      const user = this.users.find(u => u.email == email);
-      if (user) {
-        return o.error('user alredy registered');
-      } else {
-        const newUser = {
-          email,
-          password
+      this.simulateTimeResponse(() => {
+        const user = this.users.find(u => u.email == email);
+        if (user) {
+          return o.error('user alredy registered');
+        } else {
+          const newUser = {
+            email,
+            password
+          }
+          this.users = [...this.users, newUser];
+          return o.next(newUser.email);
         }
-        this.users = [...this.users, newUser];
-        return o.next(newUser.email);
-      }
+      })
     });
+  }
+
+  simulateTimeResponse(fn: Function) {
+    if (environment.mock.enabled) {
+      setTimeout(() => {
+        fn();
+      }, environment.mock.timeout);
+    } else {
+      fn();
+    }
   }
 }
