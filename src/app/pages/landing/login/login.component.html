@@ -1,0 +1,205 @@
+<div class="container mx-auto px-4 h-full">
+  <div class="flex content-center items-center justify-center h-full">
+    <div class="w-full lg:w-4/12 px-4">
+      <div
+        class="
+          relative
+          flex flex-col
+          min-w-0
+          break-words
+          w-full
+          mb-6
+          shadow-lg
+          rounded-lg
+          bg-gray-200
+          border-0
+        "
+      >
+        <div class="rounded-t mb-0 px-6 py-6">
+          <div class="text-center mb-3">
+            <h6 class="text-gray-600 text-sm font-bold">
+              Prihláste sa pomocou
+            </h6>
+          </div>
+          <div class="btn-wrapper text-center">
+            <button
+              class="
+                bg-white
+                active:bg-gray-50
+                text-gray-700
+                font-normal
+                px-4
+                py-2
+                rounded
+                outline-none
+                focus:outline-none
+                mr-2
+                mb-1
+                uppercase
+                shadow
+                hover:shadow-md
+                inline-flex
+                items-center
+                font-bold
+                text-xs
+                ease-linear
+                transition-all
+                duration-150
+              "
+            >
+              <svg
+                class="w-5 h-5 mr-1"
+                xmlns="http://www.w3.org/2000/svg"
+                width="48"
+                height="48"
+                viewBox="0 0 48 48"
+              >
+                <path
+                  fill="#FFC107"
+                  d="M43.611,20.083H42V20H24v8h11.303c-1.649,4.657-6.08,8-11.303,8c-6.627,0-12-5.373-12-12c0-6.627,5.373-12,12-12c3.059,0,5.842,1.154,7.961,3.039l5.657-5.657C34.046,6.053,29.268,4,24,4C12.955,4,4,12.955,4,24c0,11.045,8.955,20,20,20c11.045,0,20-8.955,20-20C44,22.659,43.862,21.35,43.611,20.083z"
+                ></path>
+                <path
+                  fill="#FF3D00"
+                  d="M6.306,14.691l6.571,4.819C14.655,15.108,18.961,12,24,12c3.059,0,5.842,1.154,7.961,3.039l5.657-5.657C34.046,6.053,29.268,4,24,4C16.318,4,9.656,8.337,6.306,14.691z"
+                ></path>
+                <path
+                  fill="#4CAF50"
+                  d="M24,44c5.166,0,9.86-1.977,13.409-5.192l-6.19-5.238C29.211,35.091,26.715,36,24,36c-5.202,0-9.619-3.317-11.283-7.946l-6.522,5.025C9.505,39.556,16.227,44,24,44z"
+                ></path>
+                <path
+                  fill="#1976D2"
+                  d="M43.611,20.083H42V20H24v8h11.303c-0.792,2.237-2.231,4.166-4.087,5.571c0.001-0.001,0.002-0.001,0.003-0.002l6.19,5.238C36.971,39.205,44,34,44,24C44,22.659,43.862,21.35,43.611,20.083z"
+                ></path>
+              </svg>
+              Google
+            </button>
+          </div>
+          <hr class="mt-6 border-b-1 border-gray-300" />
+        </div>
+        <div class="flex-auto px-4 lg:px-10 py-10 pt-0">
+          <div class="text-center mb-3">
+            <h6 class="text-gray-600 text-sm font-bold">
+              Alebo sa prihláste pomocou vášho účtu
+            </h6>
+          </div>
+          <form (ngSubmit)="onSubmit()" [formGroup]="form">
+            <div class="relative w-full mb-3">
+              <label
+                class="block uppercase text-gray-600 text-xs font-bold mb-2"
+                >Email</label
+              >
+              <input
+                type="text"
+                class="
+                  border-0
+                  px-3
+                  py-3
+                  placeholder-gray-300
+                  text-gray-600
+                  bg-white
+                  rounded
+                  text-sm
+                  shadow
+                  focus:outline-none focus:ring
+                  w-full
+                  ease-linear
+                  transition-all
+                  duration-150
+                "
+                placeholder="Email"
+              />
+            </div>
+            <div class="relative w-full mb-3">
+              <label
+                class="block uppercase text-gray-600 text-xs font-bold mb-2"
+                >Heslo</label
+              >
+              <input
+                type="password"
+                class="
+                  border-0
+                  px-3
+                  py-3
+                  placeholder-gray-300
+                  text-gray-600
+                  bg-white
+                  rounded
+                  text-sm
+                  shadow
+                  focus:outline-none focus:ring
+                  w-full
+                  ease-linear
+                  transition-all
+                  duration-150
+                "
+                placeholder="Heslo"
+              />
+            </div>
+            <div>
+              <label class="inline-flex items-center cursor-pointer">
+                <input
+                  type="checkbox"
+                  class="
+                    form-checkbox
+                    border-0
+                    rounded
+                    text-gray-700
+                    ml-1
+                    w-5
+                    h-5
+                    ease-linear
+                    transition-all
+                    duration-150
+                  "
+                />
+                <span class="ml-2 text-sm font-semibold text-gray-600"
+                  >Zapamätať si prihlásenie</span
+                >
+              </label>
+            </div>
+            <div class="text-center mt-6">
+              <button
+                class="
+                  bg-gray-800
+                  text-white
+                  active:bg-gray-600
+                  text-sm
+                  font-bold
+                  uppercase
+                  px-6
+                  py-3
+                  rounded
+                  shadow
+                  hover:shadow-lg
+                  outline-none
+                  focus:outline-none
+                  mr-1
+                  mb-1
+                  w-full
+                  ease-linear
+                  transition-all
+                  duration-150
+                "
+              >
+                Prihlásiť sa
+              </button>
+            </div>
+          </form>
+          <hr class="mt-6 border-b-1 border-gray-300" />
+        </div>
+        <div class="flex-auto px-4 lg:px-10 py-10 pt-0">
+          <div class="ml-2 text-sm font-semibold text-gray-600">
+            <span>
+              Nemáte ešte účet?
+              <a
+                [routerLink]="['/welcome', 'register']"
+                class="text-blue-500 hover:text-blue-600"
+                >Zaregistrjte sa</a
+              >
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
