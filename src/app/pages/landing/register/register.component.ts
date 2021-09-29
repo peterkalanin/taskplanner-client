@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 
@@ -9,6 +9,10 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class RegisterComponent implements OnInit {
   form: FormGroup;
+  formError = {
+    passwordMatch: false,
+    existingEmail: false
+  }
 
   constructor(
     private authService: AuthService,
@@ -23,11 +27,11 @@ export class RegisterComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void { }
 
   onSubmit(): void {
     if (this.form.valid) {
+      this.formError.existingEmail = false;
       const { email, password } = this.form.value;
       this.authService.register(email, password)
         .subscribe(
@@ -38,7 +42,7 @@ export class RegisterComponent implements OnInit {
           },
           (err) => {
             console.error(err);
-
+            this.formError.existingEmail = true;
           }
         )
     }
