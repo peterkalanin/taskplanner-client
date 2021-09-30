@@ -4,11 +4,13 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { FooterComponent } from './navigation/footer/footer.component';
 import { PanelComponent } from './navigation/panel/panel.component';
 import { RouterModule } from '@angular/router';
+import { TaskListComponent } from './task/task-list/task-list.component';
 
 @NgModule({
   declarations: [
     FooterComponent,
-    PanelComponent
+    PanelComponent,
+    TaskListComponent
   ],
   imports: [
     CommonModule,
@@ -17,7 +19,8 @@ import { RouterModule } from '@angular/router';
   ],
   exports: [
     FooterComponent,
-    PanelComponent
+    PanelComponent,
+    TaskListComponent
   ]
 })
 export class ComponentsModule { }

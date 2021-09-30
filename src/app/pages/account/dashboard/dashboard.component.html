@@ -1,4 +1,4 @@
-<div class="relative md:ml-64 bg-gray-200">
+<div class="relative md:ml-64">
   <svg
     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
     xmlns:svg="http://www.w3.org/2000/svg"
@@ -33,7 +33,50 @@
               shadow-lg
             "
           >
-            <div class="flex-auto p-4"></div>
+            <div class="rounded-t mb-0 px-4 py-3 border-0">
+              <div class="flex flex-wrap items-center">
+                <div class="relative w-full px-4 max-w-full flex-grow flex-1">
+                  <h3 class="font-semibold text-base text-blueGray-700">
+                    Naplánované úlohy
+                  </h3>
+                </div>
+                <div
+                  class="
+                    relative
+                    w-full
+                    px-4
+                    max-w-full
+                    flex-grow flex-1
+                    text-right
+                  "
+                >
+                  <button
+                    class="
+                        bg-{{ theme.primary }}-500
+                        text-white
+                        active:bg-{{ theme.primary }}-600
+                        text-xs
+                        font-bold
+                        uppercase
+                        px-3
+                        py-1
+                        rounded
+                        outline-none
+                        focus:outline-none
+                        mr-1
+                        mb-1
+                        ease-linear
+                        transition-all
+                        duration-150
+                      "
+                  >
+                    <i class="fa fa-angle-double-right"></i>
+                    Zobraz všetky
+                  </button>
+                </div>
+              </div>
+            </div>
+            <app-task-list></app-task-list>
           </div>
         </div>
         <div class="w-full lg:w-6/12 xl:w-3/12 px-4">
