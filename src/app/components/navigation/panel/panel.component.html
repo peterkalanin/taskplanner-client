@@ -50,9 +50,28 @@
       [routerLink]="['/acc', 'dashboard']"
       routerLinkActive="router-link-active"
     >
-      Taskplanner App
+      {{ appName }}
     </a>
+    <button
+      class="
+        cursor-pointer
+        text-black
+        opacity-50
+        md:hidden
+        px-3
+        py-1
+        text-xl
+        leading-none
+        bg-transparent
+        rounded
+        border border-solid border-transparent
+      "
+      (click)="openMobilePanel()"
+    >
+      <i class="fa fa-bars"></i>
+    </button>
     <div
+      #panelContent
       class="
         md:flex
         md:flex-col
@@ -72,9 +91,62 @@
         items-center
         flex-1
         rounded
-        hidden
+        panel-closed
       "
     >
+      <div
+        class="
+          md:min-w-full md:hidden
+          block
+          pb-4
+          mb-4
+          border-b border-solid border-blueGray-200
+        "
+      >
+        <div class="flex flex-wrap">
+          <div class="w-6/12">
+            <a
+              class="
+                md:block
+                text-left
+                md:pb-2
+                text-blueGray-600
+                mr-0
+                inline-block
+                whitespace-nowrap
+                text-sm
+                uppercase
+                font-bold
+                p-4
+                px-0
+              "
+              [routerLink]="['/acc', 'dashboard']"
+            >
+              {{ appName }}
+            </a>
+          </div>
+          <div class="w-6/12 flex justify-end">
+            <button
+              class="
+                cursor-pointer
+                text-black
+                opacity-50
+                md:hidden
+                px-3
+                py-1
+                text-xl
+                leading-none
+                bg-transparent
+                rounded
+                border border-solid border-transparent
+              "
+              (click)="closeMobilePanel()"
+            >
+              <i class="fa fa-times"></i>
+            </button>
+          </div>
+        </div>
+      </div>
       <ul class="md:flex-col md:min-w-full flex flex-col list-none">
         <li class="items-center">
           <a
