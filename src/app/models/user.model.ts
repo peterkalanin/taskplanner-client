@@ -1,8 +1,12 @@
 export interface User {
-    email: string;
-    password: string;
+  id: string;
+  email: string;
 }
 
-export interface UserRegister extends User {
-    password_repeat: string;
+export interface UserLogin extends User {
+  password: string;
+}
+
+export interface UserRegister extends UserLogin {
+  password_repeat: string;
 }

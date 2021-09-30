@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { User } from '../models/user.model';
+import { User, UserLogin } from '../models/user.model';
 import { simulateTimeResponse, uuidv4 } from './utils';
 
 export const USERS_KEY = 'users';
@@ -9,24 +9,24 @@ export const USERS_KEY = 'users';
   providedIn: 'root',
 })
 export class AuthMockService {
-  public get users(): User[] {
+  public get users(): UserLogin[] {
     const u = localStorage.getItem(USERS_KEY) || '[]';
     return JSON.parse(u) || [];
   }
-  public set users(value: User[]) {
+  public set users(value: UserLogin[]) {
     localStorage.setItem(USERS_KEY, JSON.stringify(value));
   }
 
   constructor() {}
 
-  login(email: string, password: string): Observable<string> {
+  login(email: string, password: string): Observable<User> {
     return new Observable((o) => {
       simulateTimeResponse(() => {
         const user = this.users.find(
           (u) => u.email == email && u.password == password
         );
         if (user) {
-          return o.next(user.email);
+          return o.next(user as User);
         } else {
           return o.error('no user or wrong password');
         }
@@ -34,7 +34,7 @@ export class AuthMockService {
     });
   }
 
-  register(email: string, password: string): Observable<string> {
+  register(email: string, password: string): Observable<User> {
     return new Observable((o) => {
       simulateTimeResponse(() => {
         const user = this.users.find((u) => u.email == email);
@@ -45,9 +45,9 @@ export class AuthMockService {
             id: uuidv4(),
             email,
             password,
-          } as User;
+          } as UserLogin;
           this.users = [...this.users, newUser];
-          return o.next(newUser.email);
+          return o.next(newUser as User);
         }
       });
     });

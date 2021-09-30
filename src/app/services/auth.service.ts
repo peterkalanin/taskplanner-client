@@ -1,19 +1,20 @@
 import { Injectable } from '@angular/core';
 import { AuthMockService } from '../mock/auth-mock.service';
+import { User } from '../models/user.model';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthService {
-  jwt: any;
+  userToken: User | undefined;
 
-  constructor(private authMockService: AuthMockService) { }
+  constructor(private authMockService: AuthMockService) {}
 
   login(email: string, password: string) {
     const obs$ = this.authMockService.login(email, password);
 
-    obs$.subscribe(val => {
-      this.jwt = val;
+    obs$.subscribe((val) => {
+      this.userToken = val;
     });
 
     return obs$;
