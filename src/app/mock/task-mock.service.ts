@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Task } from '../models/task.model';
-import { simulateTimeResponse } from './utils';
+import { Task, TaskCreate } from '../models/task.model';
+import { simulateTimeResponse, UuidTypeEnum, uuidv4 } from './utils';
 
 export const TASKS_KEY = 'tasks';
 
@@ -27,9 +27,27 @@ export class TaskMockService {
     });
   }
 
-  addTask(userUUID: string, task: Task): void {
-    const uModel = this.getUserTasks(userUUID);
-    uModel.addTask(task);
+  addTask(userUUID: string | undefined, task: TaskCreate): Observable<Task> {
+    return new Observable((o) => {
+      simulateTimeResponse(() => {
+        if (userUUID === undefined) {
+          return o.error('No userUUID');
+        }
+
+        if (task === undefined) {
+          return o.error('No task provided');
+        }
+
+        const uModel = this.getUserTasks(userUUID);
+        const newTask = {
+          ...task,
+          id: uuidv4(UuidTypeEnum.TASK),
+        };
+        uModel.addTask(newTask);
+
+        return o.next(newTask);
+      });
+    });
   }
 
   /**

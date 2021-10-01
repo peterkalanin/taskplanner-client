@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 import { share } from 'rxjs/operators';
 import { TaskMockService } from '../mock/task-mock.service';
-import { Task } from '../models/task.model';
+import { Task, TaskCreate } from '../models/task.model';
 import { AuthService } from './auth.service';
 
 @Injectable({
@@ -24,6 +24,12 @@ export class TaskService {
     obs$.subscribe((val) => {
       this.tasks$.next(val);
     });
+
+    return obs$;
+  }
+
+  createTask(task: TaskCreate): Observable<Task> {
+    const obs$ = this.taskMockService.addTask(this.authService.userId, task);
 
     return obs$;
   }
