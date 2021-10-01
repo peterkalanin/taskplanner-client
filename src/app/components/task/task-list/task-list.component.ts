@@ -3,9 +3,13 @@ import {
   OnInit,
   ChangeDetectionStrategy,
   Input,
+  OnDestroy,
 } from '@angular/core';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 import { UuidTypeEnum, uuidv4 } from 'src/app/mock/utils';
 import { Task } from 'src/app/models/task.model';
+import { TaskService } from 'src/app/services/task.service';
 import { ThemeService } from 'src/app/services/theme.service';
 
 @Component({
@@ -14,41 +18,23 @@ import { ThemeService } from 'src/app/services/theme.service';
   styleUrls: ['./task-list.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TaskListComponent implements OnInit {
-  tasks: Task[] = [
-    {
-      id: uuidv4(UuidTypeEnum.TASK),
-      date: new Date('1-10-2021 10:32'),
-      description: 'Uprac celú kuchyňu aj chladničku',
-      name: 'Upratovanie kuchyne',
-      tags: ['upratovanie'],
-    },
-    {
-      id: uuidv4(UuidTypeEnum.TASK),
-      date: new Date('1-10-2021 11:20'),
-      description: 'Uprac celú kuchyňu aj chladničku',
-      name: 'Upratovanie obývačky',
-      tags: ['upratovanie'],
-    },
-    {
-      id: uuidv4(UuidTypeEnum.TASK),
-      date: new Date('1-10-2021 14:35'),
-      description: 'Uprac celú kuchyňu aj chladničku',
-      name: 'Vysávanie',
-      tags: ['upratovanie'],
-    },
-    {
-      id: uuidv4(UuidTypeEnum.TASK),
-      date: new Date('1-10-2021 12:00'),
-      description: 'Uprac celú kuchyňu aj chladničku',
-      name: 'Varenie',
-      tags: ['varenie'],
-    },
-  ];
+export class TaskListComponent implements OnInit, OnDestroy {
+  tasks: Task[] = [];
 
-  constructor(public theme: ThemeService) {}
+  unsubscribe$: Subject<any> = new Subject<any>();
+
+  constructor(public theme: ThemeService, private taskService: TaskService) {}
 
   ngOnInit(): void {
-    console.log(this.tasks);
+    this.taskService.tasks$
+      .pipe(takeUntil(this.unsubscribe$))
+      .subscribe((val) => {
+        this.tasks = val;
+      });
+  }
+
+  ngOnDestroy(): void {
+    this.unsubscribe$.next();
+    this.unsubscribe$.complete();
   }
 }
