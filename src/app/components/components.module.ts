@@ -5,12 +5,23 @@ import { FooterComponent } from './navigation/footer/footer.component';
 import { PanelComponent } from './navigation/panel/panel.component';
 import { RouterModule } from '@angular/router';
 import { TaskListComponent } from './task/task-list/task-list.component';
+import { WaveThemeComponent } from './theme/background/wave.theme';
+import { LineThemeComponent } from './theme/background/line.theme';
+import { BubbleThemeComponent } from './theme/background/bubble.theme';
+
+const THEMES = [
+  WaveThemeComponent,
+  LineThemeComponent,
+  BubbleThemeComponent
+]
 
 @NgModule({
   declarations: [
     FooterComponent,
     PanelComponent,
-    TaskListComponent
+    TaskListComponent,
+
+    ...THEMES
   ],
   imports: [
     CommonModule,
@@ -20,7 +31,9 @@ import { TaskListComponent } from './task/task-list/task-list.component';
   exports: [
     FooterComponent,
     PanelComponent,
-    TaskListComponent
+    TaskListComponent,
+
+    ...THEMES
   ]
 })
 export class ComponentsModule { }

@@ -30,7 +30,11 @@
                 <ul class="flex mb-0 list-none flex-wrap pt-3 pb-4 flex-row">
                   <li class="-mb-px mx-4 last:mr-0 flex-auto text-center">
                     <button
-                      class="bg-{{ theme.primary }}-600 text-white w-full"
+                      class="bg-{{
+                        theme.primary
+                      }}-600 text-white w-full ease-linear
+                      transition-all
+                      duration-150"
                     >
                       <span
                         class="
@@ -51,7 +55,11 @@
                   </li>
                   <li class="-mb-px mx-4 last:mr-0 flex-auto text-center">
                     <button
-                      class="bg-white text-{{ theme.primary }}-600 w-full"
+                      class="bg-white text-{{
+                        theme.primary
+                      }}-600 w-full ease-linear
+                      transition-all
+                      duration-150"
                     >
                       <span
                         class="
@@ -85,72 +93,6 @@
                       Farebná téma
                     </label>
                     <div class="flex gap-4">
-                      <!-- <div
-                        class="
-                          block
-                          bg-green-600
-                          rounded
-                          w-8
-                          h-8
-                          border-2 border-white
-                          cursor-pointer
-                        "
-                        [class.border-black]="theme.primary == 'green'"
-                        (click)="theme.changePrimary('green')"
-                      ></div>
-                      <div
-                        class="
-                          block
-                          bg-teal-600
-                          rounded
-                          w-8
-                          h-8
-                          border-2 border-white
-                          cursor-pointer
-                        "
-                        [class.border-black]="theme.primary == 'teal'"
-                        (click)="theme.changePrimary('teal')"
-                      ></div>
-                      <div
-                        class="
-                          block
-                          bg-blue-600
-                          rounded
-                          w-8
-                          h-8
-                          border-2 border-white
-                          cursor-pointer
-                        "
-                        [class.border-black]="theme.primary == 'blue'"
-                        (click)="theme.changePrimary('blue')"
-                      ></div>
-                      <div
-                        class="
-                          block
-                          bg-violet-600
-                          rounded
-                          w-8
-                          h-8
-                          border-2 border-white
-                          cursor-pointer
-                        "
-                        [class.border-black]="theme.primary == 'violet'"
-                        (click)="theme.changePrimary('violet')"
-                      ></div>
-                      <div
-                        class="
-                          block
-                          bg-pink-600
-                          rounded
-                          w-8
-                          h-8
-                          border-2 border-white
-                          cursor-pointer
-                        "
-                        [class.border-black]="theme.primary == 'pink'"
-                        (click)="theme.changePrimary('pink')"
-                      ></div> -->
-
                       <div
                         *ngFor="let color of theme.colors"
                         class="
@@ -165,6 +107,49 @@
                         [class.border-black]="theme.primary == color"
                         (click)="theme.changePrimary(color)"
                       ></div>
+                    </div>
+                  </div>
+                  <div class="relative w-full mb-3">
+                    <label
+                      class="
+                        block
+                        uppercase
+                        text-gray-600 text-xs
+                        font-bold
+                        mb-2
+                      "
+                    >
+                      Motív
+                    </label>
+                    <div class="flex gap-4">
+                      <div
+                        *ngFor="let motive of theme.motives"
+                        class="
+                          bg-{{ theme.primary }}-500
+                          text-white
+                          active:bg-{{ theme.primary }}-600
+                          font-bold
+                          uppercase
+                          text-xs
+                          px-4
+                          py-2
+                          rounded
+                          shadow
+                          hover:shadow-md
+                          outline-none
+                          focus:outline-none
+                          mr-1
+                          mb-1
+                          ease-linear
+                          transition-all
+                          duration-150
+                          cursor-pointer
+                        "
+                        [class.border-black]="theme.motive == motive"
+                        (click)="theme.changeMotive(motive)"
+                      >
+                        {{ motive }}
+                      </div>
                     </div>
                   </div>
                 </div>

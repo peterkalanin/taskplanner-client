@@ -23,13 +23,19 @@ export class TaskListComponent implements OnInit, OnDestroy {
 
   unsubscribe$: Subject<any> = new Subject<any>();
 
-  constructor(public theme: ThemeService, private taskService: TaskService) {}
+  constructor(public theme: ThemeService, private taskService: TaskService) { }
 
   ngOnInit(): void {
     this.taskService.tasks$
       .pipe(takeUntil(this.unsubscribe$))
       .subscribe((val) => {
-        this.tasks = val;
+        this.tasks = [...val, {
+          id: 'asda',
+          date: new Date(),
+          description: '',
+          name: 'Uprac byt',
+          tags: ['upratovanie']
+        }];
       });
   }
 
