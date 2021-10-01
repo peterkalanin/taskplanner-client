@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { User, UserLogin } from '../models/user.model';
-import { simulateTimeResponse, uuidv4 } from './utils';
+import { simulateTimeResponse, UuidTypeEnum, uuidv4 } from './utils';
 
 export const USERS_KEY = 'users';
 
@@ -42,7 +42,7 @@ export class AuthMockService {
           return o.error('user alredy registered');
         } else {
           const newUser = {
-            id: uuidv4(),
+            id: uuidv4(UuidTypeEnum.USER),
             email,
             password,
           } as UserLogin;
