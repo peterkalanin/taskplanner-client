@@ -1,31 +1,34 @@
-import { Component, OnInit, ChangeDetectionStrategy, ViewChild } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  ChangeDetectionStrategy,
+  ViewChild,
+} from '@angular/core';
 import { Router } from 'express';
 
 @Component({
   selector: 'app-panel',
   templateUrl: './panel.component.html',
   styleUrls: ['./panel.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PanelComponent implements OnInit {
-  appName: string = 'Task Planner App'
+  appName: string = 'Task Planner App';
   @ViewChild('panelContent') panelContent: any;
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   openMobilePanel() {
-    const classList = this.panelContent.nativeElement.classList
-    classList.remove('panel-closed')
-    classList.add('panel-opened')
+    const classList = this.panelContent.nativeElement.classList;
+    classList.remove('hidden');
+    classList.add('bg-white', 'm-2', 'py-3', 'px-6');
   }
 
   closeMobilePanel() {
-    const classList = this.panelContent.nativeElement.classList
-    classList.remove('panel-opened')
-    classList.add('panel-closed')
+    const classList = this.panelContent.nativeElement.classList;
+    classList.remove('bg-white', 'm-2', 'py-3', 'px-6');
+    classList.add('hidden');
   }
-
 }
