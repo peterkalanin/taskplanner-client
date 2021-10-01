@@ -4,7 +4,8 @@ import {
   ChangeDetectionStrategy,
   ViewChild,
 } from '@angular/core';
-import { Router } from 'express';
+import { Router } from '@angular/router';
+import { ThemeService } from 'src/app/services/theme.service';
 
 @Component({
   selector: 'app-panel',
@@ -16,9 +17,20 @@ export class PanelComponent implements OnInit {
   appName: string = 'Task Planner App';
   @ViewChild('panelContent') panelContent: any;
 
-  constructor() {}
+  constructor(private router: Router, public theme: ThemeService) {
+    // this.router.events.subscribe((val) => {
+    //   console.log(val);
+    //   if (this.panelContent) {
+    //     const elements = this.panelContent.nativeElement.querySelectorAll('.active-link');
+    //     console.log(elements)
+    //     elements.array.forEach(element => {
+    //       element.classList.add('text-pink-500')
+    //     });
+    //   }
+    // })
+  }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
   openMobilePanel() {
     const classList = this.panelContent.nativeElement.classList;

@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class ThemeService {
-  primary: string = 'blue';
+  primary: string = 'pink';
 
   constructor() { }
 }
