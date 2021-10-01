@@ -2,10 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { ThemeService } from 'src/app/services/theme.service';
 
 @Component({
-  templateUrl: './acc.component.html',
-  styleUrls: ['./acc.component.scss']
+  templateUrl: './settings.component.html',
+  styleUrls: ['./settings.component.scss']
 })
-export class AccComponent implements OnInit {
+export class SettingsComponent implements OnInit {
 
   constructor(public theme: ThemeService) { }
 

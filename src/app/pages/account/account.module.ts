@@ -5,12 +5,14 @@ import { AccountRoutingModule } from './account-routing.module';
 import { AccComponent } from './acc/acc.component';
 import { ComponentsModule } from 'src/app/components/components.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { SettingsComponent } from './settings/settings.component';
 
 
 @NgModule({
   declarations: [
     AccComponent,
-    DashboardComponent
+    DashboardComponent,
+    SettingsComponent
   ],
   imports: [
     CommonModule,

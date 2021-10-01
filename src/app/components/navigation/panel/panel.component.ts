@@ -11,7 +11,7 @@ import { ThemeService } from 'src/app/services/theme.service';
   selector: 'app-panel',
   templateUrl: './panel.component.html',
   styleUrls: ['./panel.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.Default,
 })
 export class PanelComponent implements OnInit {
   appName: string = 'Task Planner App';
