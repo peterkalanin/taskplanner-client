@@ -16,7 +16,6 @@ import { ThemeService } from 'src/app/services/theme.service';
   selector: 'app-task-list',
   templateUrl: './task-list.component.html',
   styleUrls: ['./task-list.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TaskListComponent implements OnInit, OnDestroy {
   tasks: Task[] = [];
@@ -29,13 +28,8 @@ export class TaskListComponent implements OnInit, OnDestroy {
     this.taskService.tasks$
       .pipe(takeUntil(this.unsubscribe$))
       .subscribe((val) => {
-        this.tasks = [...val, {
-          id: 'asda',
-          date: new Date(),
-          description: '',
-          name: 'Uprac byt',
-          tags: ['upratovanie']
-        }];
+        this.tasks = val;
+        console.log(this.tasks);
       });
   }
 

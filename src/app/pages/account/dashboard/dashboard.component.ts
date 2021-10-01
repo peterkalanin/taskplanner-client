@@ -7,7 +7,7 @@ import { ThemeService } from 'src/app/services/theme.service';
   styleUrls: ['./dashboard.component.scss'],
 })
 export class DashboardComponent implements OnInit {
-  constructor(public theme: ThemeService, private taskService: TaskService) {}
+  constructor(public theme: ThemeService, private taskService: TaskService) { }
 
   ngOnInit(): void {
     this.taskService.getAllTasks();

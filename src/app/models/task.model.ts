@@ -7,4 +7,5 @@ export interface TaskCreate {
 
 export interface Task extends TaskCreate {
   id: string;
+  userId: string;
 }

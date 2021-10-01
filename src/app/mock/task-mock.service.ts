@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Task, TaskCreate } from '../models/task.model';
+import { UserLogin } from '../models/user.model';
 import { simulateTimeResponse, UuidTypeEnum, uuidv4 } from './utils';
 
 export const TASKS_KEY = 'tasks';
@@ -9,9 +10,15 @@ export const TASKS_KEY = 'tasks';
   providedIn: 'root',
 })
 export class TaskMockService {
-  userTasks: UserTasks = {};
+  public get tasks(): Task[] {
+    const u = localStorage.getItem(TASKS_KEY) || '[]';
+    return JSON.parse(u) || [];
+  }
+  public set tasks(value: Task[]) {
+    localStorage.setItem(TASKS_KEY, JSON.stringify(value));
+  }
 
-  constructor() {}
+  constructor() { }
 
   getTasks(userUUID: string | undefined): Observable<Task[]> {
     return new Observable((o) => {
@@ -20,14 +27,15 @@ export class TaskMockService {
           return o.error('No userUUID');
         }
 
-        const uModel = this.getUserTasks(userUUID);
+        const userTasks = this.tasks.filter((t) => t.userId == userUUID);
 
-        return o.next(uModel.tasks);
+        return o.next(userTasks);
       });
     });
   }
 
   addTask(userUUID: string | undefined, task: TaskCreate): Observable<Task> {
+    console.log(userUUID)
     return new Observable((o) => {
       simulateTimeResponse(() => {
         if (userUUID === undefined) {
@@ -38,54 +46,15 @@ export class TaskMockService {
           return o.error('No task provided');
         }
 
-        const uModel = this.getUserTasks(userUUID);
         const newTask = {
           ...task,
           id: uuidv4(UuidTypeEnum.TASK),
-        };
-        uModel.addTask(newTask);
+          userId: userUUID
+        } as Task;
+        this.tasks = [newTask as Task].concat(this.tasks);
 
         return o.next(newTask);
       });
     });
-  }
-
-  /**
-   * Returs user tasks. If not in model, create one
-   * @param userUUID
-   * @returns
-   */
-  private getUserTasks(userUUID: string): UserTask {
-    if (!this.userTasks[userUUID]) {
-      this.userTasks[userUUID] = new UserTask(userUUID);
-    }
-    return this.userTasks[userUUID];
-  }
-}
-
-export interface UserTasks {
-  [key: string]: UserTask;
-}
-
-/**
- * User tasks model
- */
-export class UserTask {
-  user: string;
-
-  public get tasks(): Task[] {
-    const t = localStorage.getItem(TASKS_KEY) || '[]';
-    return JSON.parse(t) || [];
-  }
-  public set tasks(value: Task[]) {
-    localStorage.setItem(TASKS_KEY, JSON.stringify(value));
-  }
-
-  constructor(user: string) {
-    this.user = user;
-  }
-
-  addTask(task: Task) {
-    this.tasks = [...this.tasks, task];
   }
 }
