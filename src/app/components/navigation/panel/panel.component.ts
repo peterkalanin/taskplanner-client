@@ -30,7 +30,9 @@ export class PanelComponent implements OnInit {
     // })
   }
 
-  ngOnInit(): void { }
+  ngOnInit(): void {
+    console.log(this.isRouteActive(['/acc', 'dashboard']))
+  }
 
   openMobilePanel() {
     const classList = this.panelContent.nativeElement.classList;
@@ -42,5 +44,18 @@ export class PanelComponent implements OnInit {
     const classList = this.panelContent.nativeElement.classList;
     classList.remove('bg-white', 'm-2', 'py-3', 'px-6');
     classList.add('hidden');
+  }
+
+  isRouteActive(route: string[]) {
+    return this.router.isActive(this.router.createUrlTree(route), true);
+  }
+
+  get activeTheme() {
+    // return 'text-' +
+    //   theme.primary +
+    //   '-500 hover:text-' +
+    //   theme.primary +
+    //   '-700';
+    return `text-${this.theme.primary}-500 hover:text-${this.theme.primary}-600`
   }
 }
