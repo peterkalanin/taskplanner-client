@@ -60,6 +60,18 @@ export class TaskService {
     return obs$;
   }
 
+  deleteTask(task: Task): Observable<Task[]> {
+    const obs$ = this.taskMockService
+      .deleteTask(this.authService.userId, task)
+      .pipe(share());
+
+    obs$.subscribe((val) => {
+      this.tasks = val;
+    });
+
+    return obs$;
+  }
+
   getTask(taskId: string) {
     return this.tasks.find(t => t.id == taskId);
   }

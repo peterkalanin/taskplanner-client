@@ -64,4 +64,14 @@ export class TaskManagerComponent implements OnInit {
       name: ''
     } as TaskCreate;
   }
+
+  removeTask() {
+    if (this.isCreate) {
+      return;
+    }
+
+    this.taskService.deleteTask(this.task as Task).subscribe((response) => {
+      this.router.navigate(['..'], { relativeTo: this.route });
+    })
+  }
 }
