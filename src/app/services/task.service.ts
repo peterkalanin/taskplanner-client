@@ -37,13 +37,24 @@ export class TaskService {
   }
 
   createTask(task: TaskCreate): Observable<Task> {
-    console.log(task);
     const obs$ = this.taskMockService
       .addTask(this.authService.userId, task)
       .pipe(share());
 
     obs$.subscribe((val) => {
-      this.tasks = [val];
+      this.tasks = [val, ...this.tasks];
+    });
+
+    return obs$;
+  }
+
+  updateTask(task: Task): Observable<Task[]> {
+    const obs$ = this.taskMockService
+      .editTask(this.authService.userId, task)
+      .pipe(share());
+
+    obs$.subscribe((val) => {
+      this.tasks = val;
     });
 
     return obs$;

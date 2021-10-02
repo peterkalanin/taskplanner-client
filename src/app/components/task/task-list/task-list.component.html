@@ -67,6 +67,7 @@
           class="hover:bg-gray-50"
           [class.cursor-pointer]="isEditable"
           (click)="onTaskSelect(task)"
+          [title]="task.id"
         >
           <td
             class="

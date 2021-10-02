@@ -35,7 +35,6 @@ export class TaskMockService {
   }
 
   addTask(userUUID: string | undefined, task: TaskCreate): Observable<Task> {
-    console.log(userUUID)
     return new Observable((o) => {
       simulateTimeResponse(() => {
         if (userUUID === undefined) {
@@ -54,6 +53,30 @@ export class TaskMockService {
         this.tasks = [newTask as Task].concat(this.tasks);
 
         return o.next(newTask);
+      });
+    });
+  }
+
+  editTask(userUUID: string | undefined, task: Task): Observable<Task[]> {
+    return new Observable((o) => {
+      simulateTimeResponse(() => {
+        if (userUUID === undefined) {
+          return o.error('No userUUID');
+        }
+
+        if (task === undefined) {
+          return o.error('No task provided');
+        }
+
+        this.tasks = this.tasks.map((t) => {
+          if (t.id == task.id) {
+            return task
+          } else {
+            return t;
+          }
+        })
+
+        return o.next(this.tasks);
       });
     });
   }

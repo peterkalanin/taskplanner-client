@@ -36,15 +36,19 @@ export class TaskManagerComponent implements OnInit {
 
   onClose() {
     if (this.isCreate) {
-      this.taskService.createTask(this.task as TaskCreate).subscribe((response) => {
-        // TODO: Remove this pls
-        this.taskService.getAllTasks();
+      if (this.task?.name) {
+        this.taskService.createTask(this.task as TaskCreate).subscribe((response) => {
+          // TODO: Remove this pls
+          this.router.navigate(['..'], { relativeTo: this.route });
+        })
+      } else {
+        this.router.navigate(['..'], { relativeTo: this.route });
+      }
+    } else {
+      this.taskService.updateTask(this.task as Task).subscribe((response) => {
         this.router.navigate(['..'], { relativeTo: this.route });
       })
-    } else {
-      this.router.navigate(['..'], { relativeTo: this.route });
     }
-
   }
 
   getTask(taskId: string) {
