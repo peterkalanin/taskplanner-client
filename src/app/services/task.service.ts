@@ -22,9 +22,9 @@ export class TaskService {
   constructor(
     private taskMockService: TaskMockService,
     private authService: AuthService
-  ) {}
+  ) { }
 
-  getAllTasks(): Observable<Task[]> {
+  getAllTasks(filter?: any): Observable<Task[]> {
     const obs$ = this.taskMockService
       .getTasks(this.authService.userId)
       .pipe(share());
