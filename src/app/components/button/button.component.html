@@ -1,0 +1,28 @@
+<button
+  class="
+    bg-gray-200
+    text-gray-700
+    hover:bg-gray-300 hover:text-gray-800
+    font-bold
+    uppercase
+    text-xs text-left
+    px-4
+    py-2
+    rounded
+    outline-none
+    focus:outline-none
+    mr-1
+    mb-1
+    ease-linear
+    transition-all
+    duration-150
+  "
+  [class.w-full]="isFullWidth"
+  type="button"
+  (click)="onClick()"
+>
+  <ng-content></ng-content>
+</button>
+<!-- bg-{{ theme.primary }}-500
+    text-gray-50
+    hover:bg-{{ theme.primary }}-600 -->

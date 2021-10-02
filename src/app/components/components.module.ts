@@ -10,6 +10,8 @@ import { LineThemeComponent } from './theme/background/line.theme';
 import { BubbleThemeComponent } from './theme/background/bubble.theme';
 import { ModalComponent } from './modal/modal.component';
 import { PawsThemeComponent } from './theme/background/paws.theme';
+import { ButtonComponent } from './button/button.component';
+import { TaskTagComponent } from './task/task-tag/task-tag.component';
 
 const THEMES = [
   WaveThemeComponent,
@@ -25,7 +27,9 @@ const THEMES = [
     FooterComponent,
     PanelComponent,
     TaskListComponent,
-    ModalComponent
+    ModalComponent,
+    ButtonComponent,
+    TaskTagComponent
   ],
   imports: [
     CommonModule,
@@ -38,7 +42,9 @@ const THEMES = [
     FooterComponent,
     PanelComponent,
     TaskListComponent,
-    ModalComponent
+    ModalComponent,
+    ButtonComponent,
+    TaskTagComponent
   ]
 })
 export class ComponentsModule { }
