@@ -1,6 +1,65 @@
 <div class="block w-full overflow-x-auto">
   <table class="items-center w-full bg-transparent border-collapse">
-    <thead></thead>
+    <thead>
+      <td
+        class="
+          w-full
+          px-6
+          align-middle
+          border border-solid
+          py-3
+          text-xs
+          uppercase
+          border-l-0 border-r-0
+          whitespace-nowrap
+          font-semibold
+          text-left
+          bg-gray-50
+          text-gray-500
+          border-gray-100
+        "
+      >
+        Úloha
+      </td>
+      <td
+        class="
+          px-6
+          align-middle
+          border border-solid
+          py-3
+          text-xs
+          uppercase
+          border-l-0 border-r-0
+          whitespace-nowrap
+          font-semibold
+          text-left
+          bg-gray-50
+          text-gray-500
+          border-gray-100
+        "
+      >
+        Nálepky
+      </td>
+      <td
+        class="
+          px-6
+          align-middle
+          border border-solid
+          py-3
+          text-xs
+          uppercase
+          border-l-0 border-r-0
+          whitespace-nowrap
+          font-semibold
+          text-left
+          bg-gray-50
+          text-gray-500
+          border-gray-100
+        "
+      >
+        Ukončenie
+      </td>
+    </thead>
     <tbody>
       <ng-container *ngIf="!loading; else loadingSkeleton">
         <tr
@@ -36,7 +95,24 @@
               text-left
             "
           >
-            {{ task.date | date: "dd.MM.YYYY hh:mm" }}
+            <span
+              *ngFor="let tag of task.tags"
+              class="
+                text-xs
+                font-semibold
+                inline-block
+                py-1
+                px-2
+                rounded-full
+                text-{{ theme.primary }}-600
+                bg-{{ theme.primary }}-200
+                uppercase
+                last:mr-0
+                mr-1
+              "
+            >
+              {{ tag }}
+            </span>
           </td>
           <td
             class="
@@ -50,23 +126,7 @@
               text-left
             "
           >
-            <span
-              class="
-            text-xs
-            font-semibold
-            inline-block
-            py-1
-            px-2
-            rounded-full
-            text-{{ theme.primary }}-600
-            bg-{{ theme.primary }}-200
-            uppercase
-            last:mr-0
-            mr-1
-          "
-            >
-              {{ task.tags }}
-            </span>
+            {{ task.date | date: "dd.MM.YYYY hh:mm" }}
           </td>
         </tr>
       </ng-container>

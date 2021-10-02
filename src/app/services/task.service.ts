@@ -37,6 +37,7 @@ export class TaskService {
   }
 
   createTask(task: TaskCreate): Observable<Task> {
+    console.log(task);
     const obs$ = this.taskMockService
       .addTask(this.authService.userId, task)
       .pipe(share());

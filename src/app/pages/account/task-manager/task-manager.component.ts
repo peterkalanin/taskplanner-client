@@ -28,13 +28,23 @@ export class TaskManagerComponent implements OnInit {
         if (taskId) {
           this.getTask(taskId);
         } else {
+          this.isCreate = true;
           this.createTask();
         }
       });
   }
 
   onClose() {
-    this.router.navigate(['..'], { relativeTo: this.route })
+    if (this.isCreate) {
+      this.taskService.createTask(this.task as TaskCreate).subscribe((response) => {
+        // TODO: Remove this pls
+        this.taskService.getAllTasks();
+        this.router.navigate(['..'], { relativeTo: this.route });
+      })
+    } else {
+      this.router.navigate(['..'], { relativeTo: this.route });
+    }
+
   }
 
   getTask(taskId: string) {
