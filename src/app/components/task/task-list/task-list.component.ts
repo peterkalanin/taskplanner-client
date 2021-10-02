@@ -19,17 +19,19 @@ import { ThemeService } from 'src/app/services/theme.service';
 })
 export class TaskListComponent implements OnInit, OnDestroy {
   tasks: Task[] = [];
+  loading: boolean = true;
 
   unsubscribe$: Subject<any> = new Subject<any>();
 
   constructor(public theme: ThemeService, private taskService: TaskService) { }
 
   ngOnInit(): void {
+    this.loading = true;
     this.taskService.tasks$
       .pipe(takeUntil(this.unsubscribe$))
       .subscribe((val) => {
         this.tasks = val;
-        console.log(this.tasks);
+        this.loading = false;
       });
   }
 
