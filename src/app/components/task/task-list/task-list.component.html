@@ -3,7 +3,12 @@
     <thead></thead>
     <tbody>
       <ng-container *ngIf="!loading; else loadingSkeleton">
-        <tr *ngFor="let task of tasks" class="hover:bg-gray-50">
+        <tr
+          *ngFor="let task of tasks"
+          class="hover:bg-gray-50"
+          [class.cursor-pointer]="isEditable"
+          (click)="onTaskSelect(task)"
+        >
           <td
             class="
               border-t-0

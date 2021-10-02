@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
-import { share } from 'rxjs/operators';
+import { filter, share } from 'rxjs/operators';
 import { TaskMockService } from '../mock/task-mock.service';
 import { Task, TaskCreate } from '../models/task.model';
 import { AuthService } from './auth.service';
@@ -46,5 +46,9 @@ export class TaskService {
     });
 
     return obs$;
+  }
+
+  getTask(taskId: string) {
+    return this.tasks.find(t => t.id == taskId);
   }
 }

@@ -7,6 +7,8 @@ import { ComponentsModule } from 'src/app/components/components.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { SettingsComponent } from './settings/settings.component';
 import { TasksComponent } from './tasks/tasks.component';
+import { TaskManagerComponent } from './task-manager/task-manager.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -14,12 +16,14 @@ import { TasksComponent } from './tasks/tasks.component';
     AccComponent,
     DashboardComponent,
     SettingsComponent,
-    TasksComponent
+    TasksComponent,
+    TaskManagerComponent
   ],
   imports: [
     CommonModule,
     AccountRoutingModule,
-    ComponentsModule
+    ComponentsModule,
+    FormsModule
   ]
 })
 export class AccountModule { }

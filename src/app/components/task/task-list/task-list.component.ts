@@ -5,6 +5,7 @@ import {
   Input,
   OnDestroy,
 } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { UuidTypeEnum, uuidv4 } from 'src/app/mock/utils';
@@ -21,9 +22,12 @@ export class TaskListComponent implements OnInit, OnDestroy {
   tasks: Task[] = [];
   loading: boolean = true;
 
+
+  @Input() isEditable: boolean = false;
+
   unsubscribe$: Subject<any> = new Subject<any>();
 
-  constructor(public theme: ThemeService, private taskService: TaskService) { }
+  constructor(public theme: ThemeService, private taskService: TaskService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.loading = true;
@@ -38,5 +42,11 @@ export class TaskListComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.unsubscribe$.next();
     this.unsubscribe$.complete();
+  }
+
+  onTaskSelect(task: Task) {
+    if (this.isEditable) {
+      this.router.navigate([task.id], { relativeTo: this.route });
+    }
   }
 }

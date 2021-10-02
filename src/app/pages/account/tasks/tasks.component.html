@@ -51,6 +51,7 @@
                     transition-all
                     duration-150
                   "
+                  [routerLink]="['new']"
                 >
                   <i class="fa fa-plus"></i>
                   <span class="ml-2">Vytvor novú úlohu</span>
@@ -58,9 +59,10 @@
               </div>
             </div>
           </div>
-          <app-task-list></app-task-list>
+          <app-task-list [isEditable]="true"></app-task-list>
         </div>
       </div>
     </div>
   </div>
 </div>
+<router-outlet></router-outlet>

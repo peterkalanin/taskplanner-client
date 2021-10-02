@@ -1,0 +1,61 @@
+<div
+  class="
+    flex
+    overflow-x-hidden
+    items-start
+    bg-opacity-50 bg-black
+    h-full
+    justify-center
+    left-0
+    overflow-y-auto
+    fixed
+    top-0
+    w-full
+    z-20
+    px-2
+  "
+>
+  <div
+    class="
+      border-0
+      rounded-lg
+      shadow-lg
+      relative
+      flex flex-col
+      w-full
+      bg-gray-50
+      outline-none
+      focus:outline-none
+      max-w-4xl
+      mt-8
+      mb-12
+      md:mt-12 md:mb-20
+    "
+  >
+    <div>
+      <a
+        class="
+          absolute
+          rounded-full
+          text-gray-600
+          p-1
+          m-1
+          w-8
+          h-8
+          text-center
+          top-0
+          right-0
+          z-10
+          hover:bg-gray-600 hover:bg-opacity-10
+          cursor-pointer
+        "
+        (click)="onClose()"
+      >
+        <i class="fa fa-times"></i>
+      </a>
+      <div style="min-height: 24rem">
+        <ng-content></ng-content>
+      </div>
+    </div>
+  </div>
+</div>

@@ -8,6 +8,7 @@ import { TaskListComponent } from './task/task-list/task-list.component';
 import { WaveThemeComponent } from './theme/background/wave.theme';
 import { LineThemeComponent } from './theme/background/line.theme';
 import { BubbleThemeComponent } from './theme/background/bubble.theme';
+import { ModalComponent } from './modal/modal.component';
 
 const THEMES = [
   WaveThemeComponent,
@@ -17,11 +18,12 @@ const THEMES = [
 
 @NgModule({
   declarations: [
+    ...THEMES,
+
     FooterComponent,
     PanelComponent,
     TaskListComponent,
-
-    ...THEMES
+    ModalComponent
   ],
   imports: [
     CommonModule,
@@ -29,11 +31,12 @@ const THEMES = [
     ReactiveFormsModule
   ],
   exports: [
+    ...THEMES,
+
     FooterComponent,
     PanelComponent,
     TaskListComponent,
-
-    ...THEMES
+    ModalComponent
   ]
 })
 export class ComponentsModule { }
