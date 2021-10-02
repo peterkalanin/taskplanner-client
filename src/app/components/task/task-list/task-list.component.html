@@ -2,50 +2,51 @@
   <table class="items-center w-full bg-transparent border-collapse">
     <thead></thead>
     <tbody>
-      <tr *ngFor="let task of tasks" class="hover:bg-gray-50">
-        <td
-          class="
-            border-t-0
-            px-6
-            align-middle
-            border-l-0 border-r-0
-            text-xs
-            whitespace-nowrap
-            p-4
-            text-left
-            font-bold
-          "
-        >
-          {{ task.name }}
-        </td>
-        <td
-          class="
-            border-t-0
-            px-6
-            align-middle
-            border-l-0 border-r-0
-            text-xs
-            whitespace-nowrap
-            p-4
-            text-left
-          "
-        >
-          {{ task.date | date: "dd.MM.YYYY hh:mm" }}
-        </td>
-        <td
-          class="
-            border-t-0
-            px-6
-            align-middle
-            border-l-0 border-r-0
-            text-xs
-            whitespace-nowrap
-            p-4
-            text-left
-          "
-        >
-          <span
+      <ng-container *ngIf="!loading; else loadingSkeleton">
+        <tr *ngFor="let task of tasks" class="hover:bg-gray-50">
+          <td
             class="
+              border-t-0
+              px-6
+              align-middle
+              border-l-0 border-r-0
+              text-xs
+              whitespace-nowrap
+              p-4
+              text-left
+              font-bold
+            "
+          >
+            {{ task.name }}
+          </td>
+          <td
+            class="
+              border-t-0
+              px-6
+              align-middle
+              border-l-0 border-r-0
+              text-xs
+              whitespace-nowrap
+              p-4
+              text-left
+            "
+          >
+            {{ task.date | date: "dd.MM.YYYY hh:mm" }}
+          </td>
+          <td
+            class="
+              border-t-0
+              px-6
+              align-middle
+              border-l-0 border-r-0
+              text-xs
+              whitespace-nowrap
+              p-4
+              text-left
+            "
+          >
+            <span
+              class="
             text-xs
             font-semibold
             inline-block
@@ -58,11 +59,18 @@
             last:mr-0
             mr-1
           "
-          >
-            {{ task.tags }}
-          </span>
-        </td>
-      </tr>
+            >
+              {{ task.tags }}
+            </span>
+          </td>
+        </tr>
+      </ng-container>
+      <ng-template #loadingSkeleton>
+        <div
+          data-placeholder
+          class="h-52 w-full overflow-hidden relative bg-gray-200"
+        ></div>
+      </ng-template>
     </tbody>
   </table>
 </div>
