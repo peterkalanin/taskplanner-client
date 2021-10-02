@@ -7,7 +7,7 @@ export class ThemeService {
   colors: string[] = ['orange', 'rose', 'pink', 'violet', 'blue', 'teal', 'green', 'lime',];
   primary: string = 'blue';
 
-  motives: string[] = ['wave', 'line', 'bubble']
+  motives: string[] = ['wave', 'line', 'bubble', 'paws']
   motive: string = 'line';
 
   constructor() { }

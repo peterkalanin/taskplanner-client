@@ -9,11 +9,13 @@ import { WaveThemeComponent } from './theme/background/wave.theme';
 import { LineThemeComponent } from './theme/background/line.theme';
 import { BubbleThemeComponent } from './theme/background/bubble.theme';
 import { ModalComponent } from './modal/modal.component';
+import { PawsThemeComponent } from './theme/background/paws.theme';
 
 const THEMES = [
   WaveThemeComponent,
   LineThemeComponent,
-  BubbleThemeComponent
+  BubbleThemeComponent,
+  PawsThemeComponent
 ]
 
 @NgModule({
