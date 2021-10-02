@@ -13,5 +13,21 @@
     mr-1
   "
 >
-  {{ tag }}
+  <ng-container *ngIf="editable; else readonly">
+    <input
+      type="text"
+      [(ngModel)]="tag"
+      class="bg-opacity-0 bg-white outline-none focus:outline-none"
+    />
+    <button
+      (click)="onRemove()"
+      class="ml-1 -mt-1 pt-1 -mb-1 pb-1 pl-1 -mr-2 pr-2 rounded-r-full
+    hover:bg-{{ theme.primary }}-300 hover:text-{{ theme.primary }}-700"
+    >
+      <i class="fa fa-times"></i>
+    </button>
+  </ng-container>
+  <ng-template #readonly>
+    <span> {{ tag }}</span>
+  </ng-template>
 </span>

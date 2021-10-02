@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FooterComponent } from './navigation/footer/footer.component';
 import { PanelComponent } from './navigation/panel/panel.component';
 import { RouterModule } from '@angular/router';
@@ -34,7 +34,8 @@ const THEMES = [
   imports: [
     CommonModule,
     RouterModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule
   ],
   exports: [
     ...THEMES,
