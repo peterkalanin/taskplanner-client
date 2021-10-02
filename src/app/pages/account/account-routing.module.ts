@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AccComponent } from './acc/acc.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { SettingsComponent } from './settings/settings.component';
+import { TasksComponent } from './tasks/tasks.component';
 
 const routes: Routes = [
   {
@@ -21,6 +22,10 @@ const routes: Routes = [
       {
         path: 'settings',
         component: SettingsComponent
+      },
+      {
+        path: 'tasks',
+        component: TasksComponent
       }
     ]
   }
