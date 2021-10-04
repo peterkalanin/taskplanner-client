@@ -9,7 +9,7 @@ import { ThemeService } from 'src/app/services/theme.service';
 })
 export class ButtonComponent implements OnInit {
   @Input() isFullWidth: boolean = false;
-  @Output() click: EventEmitter<void> = new EventEmitter<void>();
+  @Output() onclick: EventEmitter<void> = new EventEmitter<void>();
 
   constructor(public theme: ThemeService) { }
 
@@ -17,7 +17,7 @@ export class ButtonComponent implements OnInit {
   }
 
   onClick() {
-    this.click.emit();
+    this.onclick.emit();
   }
 
 }

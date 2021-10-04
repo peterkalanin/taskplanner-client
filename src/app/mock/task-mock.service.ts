@@ -18,7 +18,20 @@ export class TaskMockService {
     localStorage.setItem(TASKS_KEY, JSON.stringify(value));
   }
 
-  constructor() { }
+  constructor() {
+    this.tasks = this.tasks.map((t) => {
+      return {
+        id: t.id,
+        name: t.name,
+        userId: t.userId,
+
+        date: t.date || undefined,
+        deleted: t.deleted || false,
+        description: t.description || '',
+        checklists: []
+      }
+    })
+  }
 
   nondeletedTasks(userUUID: string): Task[] {
     return this.tasks.filter((t) => t.userId == userUUID && t.deleted == false);

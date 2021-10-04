@@ -1,6 +1,7 @@
 import { AfterContentInit, AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Task, TaskCreate } from 'src/app/models/task.model';
+import { uuidv4 } from 'src/app/mock/utils';
+import { Checklist, Task, TaskCreate } from 'src/app/models/task.model';
 import { TaskService } from 'src/app/services/task.service';
 import { ThemeService } from 'src/app/services/theme.service';
 
@@ -94,5 +95,17 @@ export class TaskManagerComponent implements OnInit, AfterViewInit {
     const text: string = target.value;
     const lines: number = text.split('\n').length + 1;
     target.style = `height: ${(lines * 1.5)}rem`
+  }
+
+  addNewChecklist() {
+    const checklist: Checklist = {
+      id: uuidv4(),
+      name: '',
+      taskId: '',
+      checklistItems: []
+    }
+    this.task?.checklists?.push(checklist);
+
+    console.log(this.task);
   }
 }

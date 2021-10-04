@@ -66,7 +66,7 @@
         </div>
 
         <!-- Categories panel -->
-        <div class="relative ml-16 mt-6">
+        <div *ngIf="task.tags" class="relative ml-16 mt-6">
           <div class="absolute -left-8 text-2xl text-gray-500">
             <i class="fa fa-tags" aria-hidden="true"></i>
           </div>
@@ -82,22 +82,40 @@
             </app-task-tag>
           </div>
         </div>
+
+        <!-- Checklists panel -->
+        <ng-container *ngIf="task.checklists">
+          <pre>{{ task.checklists | json }}</pre>
+          <app-checklist
+            *ngFor="let t of task.checklists; let i = index"
+            [(ngModel)]="task.checklists[i]"
+          ></app-checklist>
+        </ng-container>
       </div>
       <div class="w-72 px-4">
+        <div class="block uppercase text-gray-600 text-xs font-bold mb-2">
+          Pridaj
+        </div>
+        <div>
+          <app-button [isFullWidth]="true" (onclick)="addNewChecklist()">
+            <i class="fa fa-check-square-o w-3 mr-4 text-sm"></i>
+            <span>Zoznam</span>
+          </app-button>
+        </div>
         <div class="block uppercase text-gray-600 text-xs font-bold mb-2">
           Akcie
         </div>
         <div>
           <app-button [isFullWidth]="true">
-            <i class="fa fa-copy w-3 mr-4"></i>
+            <i class="fa fa-copy w-3 mr-4 text-sm"></i>
             <span>Duplikuj</span>
           </app-button>
           <app-button
             *ngIf="!isCreate"
             [isFullWidth]="true"
-            (click)="removeTask()"
+            (onclick)="removeTask()"
           >
-            <i class="fa fa-trash w-3 mr-4"></i>
+            <i class="fa fa-trash w-3 mr-4 text-sm"></i>
             <span>Vymaž</span>
           </app-button>
         </div>
