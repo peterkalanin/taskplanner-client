@@ -10,7 +10,7 @@
     md:flex-nowrap
     md:overflow-hidden
     shadow-xl
-    bg-white
+    bg-{{ theme.primary }}-600
     flex flex-wrap
     items-center
     justify-between
@@ -18,7 +18,7 @@
     md:w-64
     z-10
     py-4
-    px-6
+    md:bg-opacity-95
   "
 >
   <div
@@ -37,7 +37,7 @@
         md:block
         text-left
         md:pb-2
-        text-gray-600
+        text-gray-100
         mr-0
         inline-block
         whitespace-nowrap
@@ -45,7 +45,7 @@
         uppercase
         font-bold
         p-4
-        px-0
+        px-6
       "
       [routerLink]="['/acc', 'dashboard']"
       routerLinkActive="router-link-active"
@@ -148,21 +148,37 @@
         </div>
       </div>
       <ul class="md:flex-col md:min-w-full flex flex-col list-none">
-        <li class="items-center text-gray-700 hover:text-gray-500">
+        <li
+          class="
+            items-center
+            px-6
+            text-gray-50
+            hover:text-gray-200 hover:bg-white hover:bg-opacity-10
+          "
+          [routerLink]="['/acc', 'dashboard']"
+          [class]="isRouteActive(['/acc', 'dashboard']) ? activeLi : ''"
+        >
           <a
             class="text-xs uppercase py-3 font-bold block cursor-pointer"
-            [routerLink]="['/acc', 'dashboard']"
-            [class]="isRouteActive(['/acc', 'dashboard']) ? activeTheme : ''"
+            [class]="isRouteActive(['/acc', 'dashboard']) ? activeA : ''"
           >
             <i class="fa fa-desktop opacity-75 mr-2 text-sm"></i>
             <span>Nástenka</span>
           </a>
         </li>
-        <li class="items-center text-gray-700 hover:text-gray-500">
+        <li
+          class="
+            items-center
+            px-6
+            text-gray-50
+            hover:text-gray-200 hover:bg-white hover:bg-opacity-10
+          "
+          [routerLink]="['/acc', 'tasks']"
+          [class]="isRouteActive(['/acc', 'tasks']) ? activeLi : ''"
+        >
           <a
             class="text-xs uppercase py-3 font-bold block cursor-pointer"
-            [routerLink]="['/acc', 'tasks']"
-            [class]="isRouteActive(['/acc', 'tasks']) ? activeTheme : ''"
+            [class]="isRouteActive(['/acc', 'tasks']) ? activeA : ''"
           >
             <i class="fa fa-tasks opacity-75 mr-2 text-sm"></i>
             <span>Úlohy</span>
@@ -171,11 +187,19 @@
       </ul>
       <hr class="my-4 md:min-w-full" />
       <ul>
-        <li class="items-center">
+        <li
+          class="
+            items-center
+            px-6
+            text-gray-50
+            hover:text-gray-200 hover:bg-white hover:bg-opacity-10
+          "
+          [routerLink]="['/acc', 'settings']"
+          [class]="isRouteActive(['/acc', 'settings']) ? activeLi : ''"
+        >
           <a
             class="text-xs uppercase py-3 font-bold block cursor-pointer"
-            [routerLink]="['/acc', 'settings']"
-            [class]="isRouteActive(['/acc', 'settings']) ? activeTheme : ''"
+            [class]="isRouteActive(['/acc', 'settings']) ? activeA : ''"
           >
             <i class="fa fa-cogs opacity-75 mr-2 text-sm"></i>
             <span>Nastavenia</span>

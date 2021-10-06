@@ -50,12 +50,11 @@ export class PanelComponent implements OnInit {
     return this.router.isActive(this.router.createUrlTree(route), true);
   }
 
-  get activeTheme() {
-    // return 'text-' +
-    //   theme.primary +
-    //   '-500 hover:text-' +
-    //   theme.primary +
-    //   '-700';
-    return `text-${this.theme.primary}-500 hover:text-${this.theme.primary}-600`
+  get activeA() {
+    return `text-gray-50 hover:text-white`
+  }
+
+  get activeLi() {
+    return `bg-white bg-opacity-20 hover:bg-opacity-30`
   }
 }
