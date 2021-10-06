@@ -18,7 +18,7 @@
     md:w-64
     z-10
     py-4
-    md:bg-opacity-95
+    md:bg-opacity-60
   "
 >
   <div
@@ -153,7 +153,7 @@
             items-center
             px-6
             text-gray-50
-            hover:text-gray-200 hover:bg-white hover:bg-opacity-10
+            hover:text-gray-100 hover:bg-white hover:bg-opacity-10
           "
           [routerLink]="['/acc', 'dashboard']"
           [class]="isRouteActive(['/acc', 'dashboard']) ? activeLi : ''"
@@ -171,7 +171,7 @@
             items-center
             px-6
             text-gray-50
-            hover:text-gray-200 hover:bg-white hover:bg-opacity-10
+            hover:text-gray-100 hover:bg-white hover:bg-opacity-10
           "
           [routerLink]="['/acc', 'tasks']"
           [class]="isRouteActive(['/acc', 'tasks']) ? activeLi : ''"
@@ -185,14 +185,14 @@
           </a>
         </li>
       </ul>
-      <hr class="my-4 md:min-w-full" />
+      <hr class="my-4 mx-4 border-gray-300" />
       <ul>
         <li
           class="
             items-center
             px-6
             text-gray-50
-            hover:text-gray-200 hover:bg-white hover:bg-opacity-10
+            hover:text-gray-100 hover:bg-white hover:bg-opacity-10
           "
           [routerLink]="['/acc', 'settings']"
           [class]="isRouteActive(['/acc', 'settings']) ? activeLi : ''"
