@@ -1,4 +1,90 @@
-<div class="relative md:pt-24 pb-24 pt-12">
+<div class="px-16 py-12">
+  <div class="mb-8">
+    <div class="flex pb-8">
+      <div class="flex">
+        <h1 class="text-2xl md:text-3xl font-bold">Nastavenia</h1>
+      </div>
+    </div>
+
+    <div class="flex border-b border-gray-300 -mx-4">
+      <div
+        class="px-4 py-2 text-sm font-medium text-gray-700 cursor-pointer border-b-2 border-{{
+          theme.primary
+        }}-500"
+      >
+        Grafické
+      </div>
+      <div
+        class="px-4 py-2 text-sm font-medium text-gray-500 hover:text-gray-700 cursor-pointer border-b-2 border-opacity-0 border-{{
+          theme.primary
+        }}-500 hover:border-opacity-100"
+      >
+        Používateľské
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <div class="relative w-full mb-3">
+      <label class="block uppercase text-gray-600 text-xs font-bold mb-2">
+        Farebná téma
+      </label>
+      <div class="flex gap-4">
+        <div
+          *ngFor="let color of theme.colors"
+          class="
+          block
+          bg-{{ color }}-600
+          rounded
+          w-8
+          h-8
+          border-2 border-white
+          cursor-pointer
+        "
+          [class.border-black]="theme.primary == color"
+          (click)="theme.changePrimary(color)"
+        ></div>
+      </div>
+    </div>
+    <div class="relative w-full mb-3">
+      <label class="block uppercase text-gray-600 text-xs font-bold mb-2">
+        Motív
+      </label>
+      <div class="flex gap-4">
+        <div
+          *ngFor="let motive of theme.motives"
+          class="
+          bg-{{ theme.primary }}-500
+          text-white
+          active:bg-{{ theme.primary }}-600
+          font-bold
+          uppercase
+          text-xs
+          px-4
+          py-2
+          rounded
+          shadow
+          hover:shadow-md
+          outline-none
+          focus:outline-none
+          mr-1
+          mb-1
+          ease-linear
+          transition-all
+          duration-150
+          cursor-pointer
+        "
+          [class.border-black]="theme.motive == motive"
+          (click)="theme.changeMotive(motive)"
+        >
+          {{ motive }}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- <div class="relative md:pt-24 pb-24 pt-12">
   <div class="px-4 md:px-10 mx-auto w-full">
     <div class="flex flex-wrap justify-center">
       <div class="w-full lg:w-6/12 xl:w-9/12 px-4">
@@ -160,4 +246,4 @@
       </div>
     </div>
   </div>
-</div>
+</div> -->
