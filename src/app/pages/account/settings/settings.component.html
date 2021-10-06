@@ -46,7 +46,7 @@
         ></div>
       </div>
     </div>
-    <div class="relative w-full mb-3">
+    <!-- <div class="relative w-full mb-3">
       <label class="block uppercase text-gray-600 text-xs font-bold mb-2">
         Motív
       </label>
@@ -78,6 +78,41 @@
           (click)="theme.changeMotive(motive)"
         >
           {{ motive }}
+        </div>
+      </div>
+    </div> -->
+    <div class="relative w-full mb-3">
+      <label class="block uppercase text-gray-600 text-xs font-bold mb-2">
+        Pozadie
+      </label>
+      <div class="flex gap-4">
+        <div
+          *ngFor="let background of theme.backgrounds"
+          class="
+          bg-{{ theme.primary }}-500
+          text-white
+          active:bg-{{ theme.primary }}-600
+          font-bold
+          uppercase
+          text-xs
+          px-4
+          py-2
+          rounded
+          shadow
+          hover:shadow-md
+          outline-none
+          focus:outline-none
+          mr-1
+          mb-1
+          ease-linear
+          transition-all
+          duration-150
+          cursor-pointer
+        "
+          [class.border-black]="theme.background == background"
+          (click)="theme.changeBackground(background)"
+        >
+          {{ background }}
         </div>
       </div>
     </div>

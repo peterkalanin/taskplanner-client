@@ -10,6 +10,9 @@ export class ThemeService {
   motives: string[] = ['wave', 'line', 'bubble', 'paws']
   motive: string = 'line';
 
+  backgrounds: string[] = ['sea', 'forest', 'westie']
+  background: string = 'sea';
+
   constructor() { }
 
   changePrimary(newTheme: string) {
@@ -26,5 +29,13 @@ export class ThemeService {
     }
 
     this.motive = newMotive;
+  }
+
+  changeBackground(newBackground: string) {
+    if (!this.backgrounds.includes(newBackground)) {
+      return;
+    }
+
+    this.background = newBackground;
   }
 }
