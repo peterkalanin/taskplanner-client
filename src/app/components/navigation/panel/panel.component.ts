@@ -51,7 +51,7 @@ export class PanelComponent implements OnInit {
   }
 
   get activeA() {
-    return `text-gray-50 hover:text-white`
+    return `text-${this.theme.primary}-700 md:text-gray-50 hover:md:text-white`
   }
 
   get activeLi() {
