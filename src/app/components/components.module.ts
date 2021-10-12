@@ -13,6 +13,7 @@ import { PawsThemeComponent } from './theme/background/paws.theme';
 import { ButtonComponent } from './button/button.component';
 import { TaskTagComponent } from './task/task-tag/task-tag.component';
 import { ChecklistComponent } from './task/checklist/checklist.component';
+import { TaskSummaryComponent } from './task/task-summary/task-summary.component';
 
 const THEMES = [
   WaveThemeComponent,
@@ -31,7 +32,8 @@ const THEMES = [
     ModalComponent,
     ButtonComponent,
     TaskTagComponent,
-    ChecklistComponent
+    ChecklistComponent,
+    TaskSummaryComponent
   ],
   imports: [
     CommonModule,
@@ -48,7 +50,8 @@ const THEMES = [
     ModalComponent,
     ButtonComponent,
     TaskTagComponent,
-    ChecklistComponent
+    ChecklistComponent,
+    TaskSummaryComponent
   ]
 })
 export class ComponentsModule { }
